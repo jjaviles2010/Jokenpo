@@ -25,16 +25,20 @@ class GameViewModel : ViewModel() {
     }
 
     private fun setAndroidSelectedImage(randomNumber: Int) {
-        androidImage.value = when(randomNumber) {
+        androidImage.value = getImageResourceId(randomNumber)
+    }
+
+    fun setPlayerSelectedImage(idImage: Int) {
+        playerImage.value = getImageResourceId(idImage)
+    }
+
+    fun getImageResourceId(idImage: Int): Int {
+        return when (idImage) {
             0 -> R.drawable.papel
             1 -> R.drawable.pedra
             2 -> R.drawable.tesoura
             else -> 0
         }
-    }
-
-    fun setPlayerSelectedImage(idImage: Int) {
-        playerImage.value = idImage
     }
 
     fun calculateResult() {
@@ -43,32 +47,30 @@ class GameViewModel : ViewModel() {
     }
 
     private fun calculateVictory() {
-        victoryNumbers.value?.plus(when {
-            playerImage.value == 0 && androidImage.value == 1 -> 1
-            playerImage.value == 1 && androidImage.value == 2 -> 1
-            playerImage.value == 2 && androidImage.value == 0 -> 1
-            else -> 0
-        })
-
-        setRoundState("Você ganhou essa!")
+        if ((playerImage.value == R.drawable.papel && androidImage.value == R.drawable.pedra) ||
+            (playerImage.value == R.drawable.pedra && androidImage.value == R.drawable.tesoura) ||
+            (playerImage.value == R.drawable.tesoura && androidImage.value == R.drawable.papel)
+        ) {
+            victoryNumbers.value = victoryNumbers.value?.plus(1)
+            setRoundState("Você ganhou essa!")
+        }
     }
 
     private fun calculateDefeats() {
-        defeatNumbers.value?.plus(when {
-            playerImage.value == 0 && androidImage.value == 2 -> 1
-            playerImage.value == 1 && androidImage.value == 0 -> 1
-            playerImage.value == 2 && androidImage.value == 1 -> 1
-            else -> 0
-        })
-
-        setRoundState("Você perdeu essa!")
+        if ((androidImage.value == R.drawable.papel && playerImage.value == R.drawable.pedra) ||
+            (androidImage.value == R.drawable.pedra && playerImage.value == R.drawable.tesoura) ||
+            (androidImage.value == R.drawable.tesoura && playerImage.value == R.drawable.papel)
+        ) {
+            defeatNumbers.value = defeatNumbers.value?.plus(1)
+            setRoundState("Você perdeu essa!")
+        }
     }
 
     private fun setRoundState(state: String) {
         roundState.value = state
     }
 
-    fun checkFinalStatus() : String {
+    fun checkFinalStatus(): String {
         return when {
             victoryNumbers.value == 2 -> "win"
             defeatNumbers.value == 2 -> "lose"

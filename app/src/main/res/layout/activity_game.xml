@@ -87,14 +87,14 @@
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginTop="36dp" app:layout_constraintTop_toBottomOf="@+id/ivPlayer"/>
     <ImageView
-            android:src="@drawable/papel"
+            tools:src="@drawable/papel"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:id="@+id/ivPlayer" android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@+id/tvYou" app:layout_constraintStart_toStartOf="@+id/tvYou"
             app:layout_constraintEnd_toEndOf="@+id/tvYou"/>
     <ImageView
-            android:src="@drawable/pedra"
+            tools:src="@drawable/pedra"
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:id="@+id/ivAndroid" android:layout_marginTop="8dp"

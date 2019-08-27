@@ -4,15 +4,18 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.jlapp.jokenpo.R
 import com.jlapp.jokenpo.ui.game.player.PlayerFragment
+import com.jlapp.jokenpo.ui.result.ResultActivity
 import kotlinx.android.synthetic.main.activity_game.*
 
 class GameActivity : AppCompatActivity() {
@@ -34,22 +37,47 @@ class GameActivity : AppCompatActivity() {
 
     private fun configureButtonEvents() {
         ivPaper.setOnClickListener {
-            executePlay(it)
+            executePlay(0)
         }
 
         ivFist.setOnClickListener {
-            executePlay(it)
+            executePlay(1)
         }
 
         ivVictory.setOnClickListener {
-            executePlay(it)
+            executePlay(2)
         }
     }
 
-    private fun executePlay(it: View) {
+    private fun executePlay(indexImage: Int) {
+        gameViewModel.roundState.value = ""
         gameViewModel.generateAndroidSelection()
-        gameViewModel.setPlayerSelectedImage(it.id)
+        gameViewModel.setPlayerSelectedImage(indexImage)
         gameViewModel.calculateResult()
+
+        verifyFinalStatus()
+    }
+
+    private fun verifyFinalStatus() {
+        val finalStatus = gameViewModel.checkFinalStatus()
+
+        if(finalStatus == "win"){
+            navigateToWin()
+        } else if (finalStatus == "lose") {
+            navigateToLose()
+        }
+    }
+
+    private fun navigateToLose() {
+        val intent = Intent(this, ResultActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun navigateToWin() {
+        val intent = Intent(this, ResultActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun setExtras() {
