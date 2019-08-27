@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name" translatable="false">Jokenpo</string>
+    <string name="btStartGame">Start Game</string>
+    <string name="btAbout">About</string>
+    <string name="btnEndGame">End Game</string>
+    <string name="tvplayer_name">Player Name:</string>
+    <string name="btnGoGame">Go to game</string>
+    <string name="lbVictories">Victories</string>
+    <string name="tvDefeats">Defeats</string>
+    <string name="tvYou">You</string>
+    <string name="tvAndroid">Android</string>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btStartGame">Iniciar o Jogo</string>
+    <string name="btAbout">Sobre</string>
+    <string name="btnEndGame">Terminar Partida</string>
+    <string name="tvplayer_name">Nome do Jogador:</string>
+    <string name="btnGoGame">Ir pra o Jogo</string>
+    <string name="lbVictories">Vitorias</string>
+    <string name="tvDefeats">Defeats</string>
+    <string name="tvYou">You</string>
+    <string name="tvAndroid">Android</string>
+</resources>
