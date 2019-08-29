@@ -35,57 +35,6 @@ class GameActivity : AppCompatActivity() {
         configureButtonEvents()
     }
 
-    private fun configureButtonEvents() {
-        ivPaper.setOnClickListener {
-            executePlay(0)
-        }
-
-        ivFist.setOnClickListener {
-            executePlay(1)
-        }
-
-        ivVictory.setOnClickListener {
-            executePlay(2)
-        }
-    }
-
-    private fun executePlay(indexImage: Int) {
-        gameViewModel.roundState.value = ""
-        gameViewModel.generateAndroidSelection()
-        gameViewModel.setPlayerSelectedImage(indexImage)
-        gameViewModel.calculateResult()
-
-        verifyFinalStatus()
-    }
-
-    private fun verifyFinalStatus() {
-        val finalStatus = gameViewModel.checkFinalStatus()
-
-        if(finalStatus == "win"){
-            navigateToWin()
-        } else if (finalStatus == "lose") {
-            navigateToLose()
-        }
-    }
-
-    private fun navigateToLose() {
-        val intent = Intent(this, ResultActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun navigateToWin() {
-        val intent = Intent(this, ResultActivity::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun setExtras() {
-        intent.getStringExtra("player_name")?.apply {
-            gameViewModel.playerName.value = this
-        }
-    }
-
     private fun registerObserver() {
 
         gameViewModel.playerName.observe(this, Observer {
@@ -113,4 +62,45 @@ class GameActivity : AppCompatActivity() {
         })
     }
 
+    private fun setExtras() {
+        intent.getStringExtra("player_name")?.apply {
+            gameViewModel.playerName.value = this
+        }
+    }
+
+    private fun configureButtonEvents() {
+        ivPaper.setOnClickListener {
+            executePlay(0)
+        }
+
+        ivFist.setOnClickListener {
+            executePlay(1)
+        }
+
+        ivVictory.setOnClickListener {
+            executePlay(2)
+        }
+    }
+
+    private fun executePlay(indexImage: Int) {
+        gameViewModel.roundState.value = ""
+        gameViewModel.generateAndroidSelection()
+        gameViewModel.setPlayerSelectedImage(indexImage)
+        gameViewModel.calculateResult()
+
+        verifyFinalStatus()
+    }
+
+    private fun verifyFinalStatus() {
+        val finalStatus = gameViewModel.checkFinalStatus()
+        if (finalStatus != "")
+            navigateToResult(finalStatus)
+    }
+
+    private fun navigateToResult(finalStatus: String) {
+        val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra("game_result", finalStatus)
+        startActivity(intent)
+        finish()
+    }
 }
