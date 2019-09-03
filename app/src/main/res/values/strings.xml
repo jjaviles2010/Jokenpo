@@ -9,4 +9,6 @@
     <string name="tvDefeats">Defeats</string>
     <string name="tvYou">You</string>
     <string name="tvAndroid">Android</string>
+    <string name="lblAbout">About</string>
+    <string name="tvAboutText">This is a great game that you can play in your spare time!</string>
 </resources>

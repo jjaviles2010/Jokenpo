@@ -32,7 +32,7 @@ class GameViewModel : ViewModel() {
         playerImage.value = getImageResourceId(idImage)
     }
 
-    fun getImageResourceId(idImage: Int): Int {
+    private fun getImageResourceId(idImage: Int): Int {
         return when (idImage) {
             0 -> R.drawable.papel
             1 -> R.drawable.pedra

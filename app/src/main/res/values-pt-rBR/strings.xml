@@ -6,7 +6,9 @@
     <string name="tvplayer_name">Nome do Jogador:</string>
     <string name="btnGoGame">Ir pra o Jogo</string>
     <string name="lbVictories">Vitorias</string>
-    <string name="tvDefeats">Defeats</string>
-    <string name="tvYou">You</string>
+    <string name="tvDefeats">Derrotas</string>
+    <string name="tvYou">Você</string>
     <string name="tvAndroid">Android</string>
+    <string name="lblAbout">Sobre</string>
+    <string name="tvAboutText">Este é um jogo que você pode jogar no seu tempo livre!</string>
 </resources>
