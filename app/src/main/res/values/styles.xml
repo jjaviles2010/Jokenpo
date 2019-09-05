@@ -18,7 +18,7 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@drawable/rounded_button</item>
     </style>
 
     <style name="label_style">

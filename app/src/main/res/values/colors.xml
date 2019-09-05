@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#A23E81</color>
     <color name="colorAccent">#E4E76C</color>
     <color name="backgroundColor">#FFF176</color>
+    <color name="colorBgButtonPressed">#A936B1BA</color>
 </resources>
