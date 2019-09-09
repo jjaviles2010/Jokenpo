@@ -101,6 +101,7 @@ class GameActivity : AppCompatActivity() {
         val intent = Intent(this, ResultActivity::class.java)
         intent.putExtra("game_result", finalStatus)
         startActivity(intent)
+        overridePendingTransition(R.anim.enter_from_bottom, R.anim.exit_to_top)
         finish()
     }
 }

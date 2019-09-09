@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         btAbout.setOnClickListener {
             val intent = Intent(this, AboutActivity::class.java)
             startActivity(intent)
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
 
         btEndApp.setOnClickListener { finish() }

@@ -22,5 +22,6 @@ class PlayerActivity : AppCompatActivity() {
         val intent = Intent(this, GameActivity::class.java)
         intent.putExtra("player_name", etPlayerName.text.toString())
         startActivity(intent)
+        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left)
     }
 }
